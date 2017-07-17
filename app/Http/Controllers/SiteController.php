@@ -52,22 +52,22 @@ class SiteController extends Controller
 		$menu = $this->m_rep->get();
 		
 		
-		$mBuilder = Menu::make('MyNav',function($mBuilder) use ($menu) {
+		$mBuilder = Menu::make('MyNav',function($m) use ($menu) {
 			
 			foreach($menu as $item){
 				
 				if($item->parent == 0){
-					$mBuilder->add($item->title,$item->path)->id($item->id);
+					$m->add($item->title,$item->path)->id($item->id);
 				}
 				else {
-					if($mBuilder->find($item->parent > 0)){
-						$mBuilder->find($item->parent > 0)->add($item->title,$item->path)->id($item->id);
+					if($m->find($item->parent > 0)){
+						$m->find($item->parent > 0)->add($item->title,$item->path)->id($item->id);
 					}
 				}
 			}
 		});
 		
-		dd($mBuilder);
+//		dd($mBuilder);
 		
 		return $mBuilder;
 //		return $menu;
