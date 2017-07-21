@@ -6,15 +6,23 @@ use Illuminate\Http\Request;
 
 use Corp\Http\Requests;
 
+use Corp\Repositories\SlidersRepository;
+
+use Corp\Repositories\PortfoliosRepository;
+
+use Config;
 
 
 class IndexController extends SiteController
 {
 	
-	public function __construct(){
+	public function __construct(SlidersRepository $s_rep,PortfoliosRepository $p_rep){
 		
 		parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
-		 
+		
+		$this->s_rep = $s_rep;
+		$this->p_rep = $p_rep;
+		
 		$this->bar = 'right';
 		$this->template = env('THEME').'.index';
 	}
@@ -27,8 +35,42 @@ class IndexController extends SiteController
     public function index()
     {
         //
+			$portfolios = $this->getPortfolio();
+//			dd($portfolio);
+			$content = view(env('THEME').'.content')->with('portfolios',$portfolios)->render();
+			$this->vars = array_add($this->vars,'content',$content);
+			
+			$sliderItems = $this->getSliders();
+			
+//			dd($sliderItems);
+			
+			$sliders = view(env('THEME').'.slider')->with('sliders',$sliderItems)->render();
+			$this->vars = array_add($this->vars,'sliders',$sliders);
+			
 			return $this->renderOutput();
     }
+	
+	
+		protected function getPortfolio(){
+			$portfolio = $this->p_rep->get('*',Config::get('settings.home_port_count'));
+			return $portfolio;
+		}	
+	
+	
+		public function getSliders(){
+			$sliders = $this->s_rep->get();
+			
+			if($sliders->isEmpty()){
+				return FALSE;
+			}
+			
+			$sliders->transform(function($item,$key){
+				$item->img = Config::get('settings.slider_path').'/'.$item->img;
+				return $item;
+			});
+//			dd($sliders);
+			return $sliders;
+		}
 
     /**
      * Show the form for creating a new resource.
