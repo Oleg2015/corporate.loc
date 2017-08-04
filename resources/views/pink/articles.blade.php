@@ -1,13 +1,8 @@
- @extends(env('THEME').'.layouts.site')
+@extends(env('THEME').'.layouts.site')
 
 
 @section('navigation')
-	{!! $navigation !!}
-@endsection
-
-
-@section('slider')
-	{!! $sliders !!}
+{!! $navigation !!}
 @endsection 
 
 
@@ -17,10 +12,10 @@
 
 
 @section('bar')
-{!! $rightBar !!}
+{!! $rightBar or '' !!}
 @endsection
 
- 
+
 @section('footer')
 {!! $footer !!}
 @endsection  

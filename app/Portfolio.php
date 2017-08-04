@@ -8,6 +8,6 @@ class Portfolio extends Model
 {
     //
 	public function filter(){
-		return $this->belongsTo('Corh\Filter','filter_alias','alias');
+		return $this->belongsTo('Corp\Filter','filter_alias','alias');
 	}
 }
