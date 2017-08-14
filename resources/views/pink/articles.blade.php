@@ -1,4 +1,4 @@
-@extends(env('THEME').'.layouts.site')
+ @extends(env('THEME').'.layouts.site')
 
 
 @section('navigation')
@@ -12,7 +12,7 @@
 
 
 @section('bar')
-{!! $rightBar or '' !!}
+{!! $rightBar !!}
 @endsection
 
 

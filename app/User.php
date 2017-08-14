@@ -24,11 +24,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 	
-		protected function articles() {
+		public function articles() {
 			return $this->hasMany('Corp\Article');
 		}
 	
-		protected function comments() {
+		public function comments() {
 			return $this->hasMany('Corp\Comment');
 		}
+	
 }

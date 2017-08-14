@@ -78,7 +78,7 @@ class SiteController extends Controller
 			
 			foreach($menu as $item){
 				
-				if($item->parent == null){
+				if($item->parent == 0){
 					$m->add($item->title,$item->path)->id($item->id);
 				}
 				else {
