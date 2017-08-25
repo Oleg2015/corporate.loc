@@ -1,4 +1,3 @@
-
 	<div class="widget-first widget recent-posts">
 
 		@if($articles)
@@ -48,3 +47,4 @@
 		<div class="text-image" style="text-align:left"><img src="{{ asset(env('THEME')) }}/images/callus.gif" alt="Customer support" /></div>
 		<p>Proin porttitor dolor eu nibh lacinia at ultrices lorem venenatis. Sed volutpat scelerisque vulputate. </p>
 	</div>
+

@@ -40,7 +40,7 @@ class  ArticlesController extends SiteController
 		$this->vars = array_add($this->vars,'content',$content);
 		
 		
-		$comments = $this->getComments(config('settings.recent_comments'));
+		$comments = $this->getComments(config('settings.recent_comments'));  
 		$portfolios = $this->getPortfolios(config('settings.recent_portfolios'));
 //		dd($comments);
 //		dd($portfolios);
@@ -57,7 +57,6 @@ class  ArticlesController extends SiteController
 		if($comments) {
 			$comments->load('article','user');
 		}
-		
 		return $comments;
 	}
 	
@@ -88,7 +87,29 @@ class  ArticlesController extends SiteController
 //		dd($articles);  
 		
 		return $articles;
-		
-			
+				
 	}
+	
+	
+	public function show($alias = FALSE) {
+		
+		$article = $this->a_rep->one($alias,['comments' => TRUE]);
+//		dd($article);
+		if($article) {
+			$article->img = json_decode($article->img);
+		}
+//		dd($article->comments->groupBy('parent_id'));
+		
+		$content = view(env('THEME').'.article_content')->with('article',$article)->render();
+		$this->vars = array_add($this->vars,'content',$content);
+		
+		$comments = $this->getComments(config('settings.recent_comments'));
+		$portfolios = $this->getPortfolios(config('settings.recent_portfolios'));
+		//		dd($comments);
+		//		dd($portfolios);
+		$this->contentRightBar = view(env('THEME').'.articlesBar')->with(['comments' => $comments,'portfolios' => $portfolios]);
+		
+		return $this->renderOutput();
+	}
+	
 }

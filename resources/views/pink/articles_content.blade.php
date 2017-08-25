@@ -30,7 +30,7 @@
 				</div>
 				<div class="clear"></div>
 			</div>
-		@endforeach
+		@endforeachF
 
 
 	<div class="general-pagination group">
