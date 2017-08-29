@@ -30,35 +30,35 @@
 				</div>
 				<div class="clear"></div>
 			</div>
-		@endforeachF
+		@endforeach
 
 
-	<div class="general-pagination group">
-		@if($articles->lastPage() > 1)
-		
-			@if($articles->currentPage() !== 1)
-				<a href="{{ $articles->url($articles->currentPage() - 1) }}">{{ Lang::get('pagination.previous') }}</a>
-			@endif
-			
-			@for($i = 1; $i <= $articles->lastPage(); $i++)
-				@if($articles->currentPage() == $i)
-					<a class="selected disabled">{{ $i }}</a>
-				@else
-					<a href="{{ $articles->url($i) }}">{{ $i }}</a>
+			<div class="general-pagination group">
+				@if($articles->lastPage() > 1)
+
+					@if($articles->currentPage() !== 1)
+						<a href="{{ $articles->url($articles->currentPage() - 1) }}">{{ Lang::get('pagination.previous') }}</a>
+					@endif
+
+						@for($i = 1; $i <= $articles->lastPage(); $i++)
+							@if($articles->currentPage() == $i)
+								<a class="selected disabled">{{ $i }}</a>
+							@else
+								<a href="{{ $articles->url($i) }}">{{ $i }}</a>
+							@endif
+						@endfor
+
+						@if($articles->currentPage() !== $articles->lastPage())
+							<a href="{{ $articles->url(($articles->currentPage() + 1)) }}">{{ Lang::get('pagination.next') }}</a>
+						@endif
+
 				@endif
-			@endfor
-			
-			@if($articles->currentPage() !== $articles->lastPage())
-				<a href="{{ $articles->url(($articles->currentPage() + 1)) }}">{{ Lang::get('pagination.next') }}</a>
-			@endif
-			
-		@endif
-		
-	</div>
-	
+
+			</div>
+				
 	@else
-		{!! Lang::get('ru.articles no') !!}
-	
-	@endif 
+				{!! Lang::get('ru.articles_no') !!}
+
+	@endif
 
 </div>

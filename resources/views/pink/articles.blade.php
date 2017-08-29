@@ -1,4 +1,4 @@
- @extends(env('THEME').'.layouts.site')
+@extends(env('THEME').'.layouts.site')
 
 
 @section('navigation')

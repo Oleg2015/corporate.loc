@@ -1,4 +1,4 @@
-	<div class="widget-first widget recent-posts">
+<div class="widget-first widget recent-posts">
 
 		@if($articles)
 		<h3>{{ trans('ru.from_blog') }}</h3>
@@ -40,7 +40,7 @@
 				</div>
 			</div>
 		</div>-->
-	</div>
+</div>
 
 	<div class="widget-last widget text-image">
 		<h3>Customer support</h3>

@@ -26,7 +26,7 @@
 			</div>
 			<!-- .reply -->
 		</div>
-		<!-- .comment-meta .commentmetadata -->
+		<!-- .comment-meta .commentmetadata -->  
 	</div>
 	<!-- #comment-##  -->
 	

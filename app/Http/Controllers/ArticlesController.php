@@ -27,7 +27,7 @@ class  ArticlesController extends SiteController
 		$this->c_rep = $c_rep;
 
 		$this->bar = 'right';
-		$this->template = env('THEME').'.articles ';
+		$this->template = env('THEME').'.articles';
 	}
 	
 	
